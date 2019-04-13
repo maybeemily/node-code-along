@@ -1,6 +1,12 @@
 function start() {
     console.log('Request handler \'start\' was called.');
-    return 'Hello Start';
+    let content = 'empty';
+
+    exec('ls -lah', function(error, stdout, stderr) {
+        content = stdout;
+    });
+    
+    return content;
 }
 
 function upload() {
