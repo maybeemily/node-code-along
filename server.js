@@ -3,15 +3,16 @@ const url = require('url');
 
 function start(route, handle) {
     function onRequest(request, response) {
-        const postData ='';
+        
         const pathname = url.parse(request.url).pathname;
         console.log('Request for ' + pathname + ' received.');
 
         request.setEncoding('utf8');
 
         request.addListener('data', function(postDataChunk) {
+            let postData = '';
             postData += postDataChunk;
-            console.log('Received POST data chunk \'' + postDataChunk '\'.');
+            console.log('Received POST data chunk \'' + postDataChunk + '\'.');
         });
 
         request.addListener('end', function() {
